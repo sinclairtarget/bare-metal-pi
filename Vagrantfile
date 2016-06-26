@@ -16,10 +16,10 @@ Vagrant.configure(2) do |config|
 
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024
-    v.name = "rasberry-dev"
+    v.name = "rasberry-build"
   end
 
-  config.vm.hostname = "rasberry-dev"
+  config.vm.hostname = "rasberry-build"
 
   config.vm.synced_folder ".", "/home/vagrant/rasberry_pi"
 
