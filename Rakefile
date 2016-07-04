@@ -1,3 +1,5 @@
+require 'rake/clean'
+
 # ------------------------------------------------------------------------
 # Configuration
 # ------------------------------------------------------------------------
@@ -24,11 +26,7 @@ task :default => :all
 
 desc 'Build kernel.'
 task :all => [BUILD_DIR, SOURCE_DIR, obj_files]
-
-desc 'Clean up build.'
-task :clean do
-  sh "rm -rf #{BUILD_DIR}"
-end
+CLEAN.include(BUILD_DIR)
 
 # ------------------------------------------------------------------------
 # Rules
