@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.hostname = "rasberry-build"
 
-  config.vm.synced_folder ".", "/home/vagrant/rasberry_pi"
+  config.vm.synced_folder ".", "/home/vagrant/bare-metal-pi"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
