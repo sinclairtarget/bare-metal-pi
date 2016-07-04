@@ -15,7 +15,7 @@ directory SOURCE_DIR
 # Files
 # ------------------------------------------------------------------------
 source_files = Rake::FileList["#{SOURCE_DIR}/*.s"]
-obj_files = source_files.sub(SOURCE_DIR, BUILD_DIR).ext('.o')
+obj_files = source_files.pathmap("%{^#{SOURCE_DIR},#{BUILD_DIR}}X.o")
 
 # ------------------------------------------------------------------------
 # Tasks
@@ -33,7 +33,6 @@ end
 # ------------------------------------------------------------------------
 # Rules
 # ------------------------------------------------------------------------
-rule '.o' => -> (f) { "#{SOURCE_DIR}/#{f.pathmap('%n')}.s" } do |t|
+rule '.o' => -> (f) { f.pathmap("%{^#{BUILD_DIR},#{SOURCE_DIR}}X.s") } do |t|
   sh "#{TOOLCHAIN}-as -I #{SOURCE_DIR} #{t.source} -o #{t.name}"
 end
-
